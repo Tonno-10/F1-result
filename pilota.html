@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati Pilota</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Risultati di <span id="pilota-nome"></span></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Risultati Gran Premi 2025</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>GP</th>
+                        <th>Posizione</th>
+                        <th>Punti</th>
+                    </tr>
+                </thead>
+                <tbody id="risultati-tabella">
+                    <!-- I risultati saranno inseriti dinamicamente -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script>
+        // Recupera il nome del pilota dalla query string
+        const params = new URLSearchParams(window.location.search);
+        const pilota = params.get('pilota');
+        document.getElementById('pilota-nome').textContent = pilota;
+
+        // Dati di esempio per i risultati (da sostituire con dati reali)
+        const risultati = [
+            { gp: 'Australia', posizione: '2°', punti: 18 },
+            { gp: 'Bahrain', posizione: '1°', punti: 25 },
+            { gp: 'Arabia Saudita', posizione: '3°', punti: 15 },
+            // Aggiungi altri risultati qui
+        ];
+
+        // Popola la tabella con i risultati
+        const tabella = document.getElementById('risultati-tabella');
+        risultati.forEach(risultato => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${risultato.gp}</td><td>${risultato.posizione}</td><td>${risultato.punti}</td>`;
+            tabella.appendChild(row);
+        });
+    </script>
+</body>
+</html>
